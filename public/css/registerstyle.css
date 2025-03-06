@@ -1,0 +1,150 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1e1e1e;
+}
+
+/* Wrapper */
+.wrapper {
+    height: 500px; /* Reduced height */
+    width: 900px;  /* Slightly reduced width */
+    display: flex;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Image Section */
+.image-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffffff, #c5c5c5);
+    padding: 20px;
+}
+
+.image-section img {
+    max-width: 70%;
+}
+
+/* Register Form */
+.register-form {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Title */
+.register-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px; /* Reduced font size */
+    font-weight: 600;
+    color: #333;
+}
+
+/* Input Fields */
+.input-field {
+    position: relative;
+    margin-bottom: 12px; /* Reduced spacing */
+}
+
+.input-field input {
+    width: 100%;
+    padding: 6px; /* Smaller padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px; /* Smaller font */
+    height: 30px; /* Reduced height */
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 12px;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* Floating Labels */
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+    top: 4px;
+    left: 8px;
+    font-size: 10px;
+    color: #6E8EF5;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #6E8EF5;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #5a7be6;
+}
+
+/* Register Link */
+.register {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.register a {
+    color: #6E8EF5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+.two-column {
+    display: flex;
+    gap: 10px;
+}
+
+.two-column .input-field {
+    flex: 1;
+}
+.error-box {
+    margin-bottom: 10px;
+    padding: 5px;
+    background: #ffdddd;
+    border-left: 4px solid #ff4d4d;
+    color: #d8000c;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
