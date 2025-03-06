@@ -1,2 +1,3 @@
 # T92-SIS
-Student Information System
+System Title: Student Information System
+Student Name: John Anton S. Abug
