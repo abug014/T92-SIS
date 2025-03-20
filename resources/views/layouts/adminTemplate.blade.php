@@ -102,7 +102,9 @@
 
 <!-- JS -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Remove or comment out Bootstrap 4 JS -->
+<!-- <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script> -->
+<!-- Make sure Bootstrap 5 is loaded -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('js/scripts.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
@@ -112,7 +114,10 @@
 <script>
 $(document).ready(function() {
     function initializeTooltips() {
-        $('[data-bs-toggle="tooltip"]').tooltip();
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
     }
     initializeTooltips();
 
@@ -125,3 +130,5 @@ $(document).ready(function() {
 @stack('scripts')
 </body>
 </html>
+
+

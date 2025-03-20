@@ -56,8 +56,8 @@
                                                 <button type="button" 
                                                         class="btn btn-danger btn-sm" 
                                                         disabled 
-                                                        data-toggle="tooltip" 
-                                                        data-placement="top" 
+                                                        data-bs-toggle="tooltip" 
+                                                        data-bs-placement="top" 
                                                         title="Cannot delete subject with enrolled students">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </button>
@@ -101,7 +101,8 @@
 
     <script>
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
+            // Updated for Bootstrap 5
+            $('[data-bs-toggle="tooltip"]').tooltip();
         });
     </script>
 
@@ -131,3 +132,5 @@
         });
     </script>
 @endpush
+
+

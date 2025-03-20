@@ -68,8 +68,8 @@
                                                     <button type="button" 
                                                             class="btn btn-danger btn-sm" 
                                                             disabled 
-                                                            data-toggle="tooltip" 
-                                                            data-placement="top" 
+                                                            data-bs-toggle="tooltip" 
+                                                            data-bs-placement="top" 
                                                             title="Cannot remove subject with existing grade">
                                                         <i class="fas fa-times"></i> Remove
                                                     </button>
@@ -147,8 +147,8 @@
     <!-- Page level custom scripts -->
     <script>
         $(document).ready(function() {
-            // Initialize tooltips
-            $('[data-toggle="tooltip"]').tooltip();
+            // Initialize tooltips (updated for Bootstrap 5)
+            $('[data-bs-toggle="tooltip"]').tooltip();
 
             $('#enrolledSubjectsTable').DataTable({
                 "pageLength": 5,
@@ -162,3 +162,5 @@
         });
     </script>
 @endpush
+
+

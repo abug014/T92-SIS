@@ -59,8 +59,22 @@ class GradeController extends Controller
             'grades' => 'required|array',
             'grades.*' => [
                 'nullable',
-                'numeric',
-                'in:1.00,1.25,1.50,1.75,2.00,2.25,2.50,2.75,3.00,3.25,3.50,3.75,4.00,5.00'
+                function ($attribute, $value, $fail) {
+                    // Allow "INC" as a valid value
+                    if ($value === 'INC') {
+                        return;
+                    }
+                    
+                    // For numeric grades, validate against the allowed values
+                    if (!is_numeric($value) || !in_array((float)$value, [
+                        1.00, 1.25, 1.50, 1.75, 
+                        2.00, 2.25, 2.50, 2.75, 
+                        3.00, 3.25, 3.50, 3.75, 
+                        4.00, 5.00
+                    ])) {
+                        $fail('The grade must be one of the allowed values (1.00-5.00 or INC).');
+                    }
+                }
             ]
         ]);
 
@@ -71,6 +85,9 @@ class GradeController extends Controller
                 // Convert empty values to null
                 if ($grade === null || $grade === '') {
                     $formattedGrade = null;
+                } else if ($grade === 'INC') {
+                    // Keep "INC" as is
+                    $formattedGrade = 'INC';
                 } else {
                     // Format the grade with exactly 2 decimal places
                     $formattedGrade = sprintf('%.2f', (float)$grade);
@@ -114,3 +131,5 @@ class GradeController extends Controller
         return redirect()->back()->with('error', 'Grades cannot be deleted directly.');
     }
 }
+
+

@@ -112,8 +112,11 @@
                 }
             });
             
-            // Initialize tooltips
-            $('[data-toggle="tooltip"]').tooltip();
+            // Initialize tooltips (updated for Bootstrap 5)
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
 
             // Store the form that triggered the modal
             let formToSubmit = null;
@@ -138,3 +141,5 @@
         });
     </script>
 @endpush
+
+

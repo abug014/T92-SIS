@@ -43,8 +43,16 @@
                                 @php
                                     $grades = auth()->user()->student->subjects()
                                         ->whereNotNull('grade')
+                                        ->where('grade', '!=', 'INC')  // Exclude INC grades
                                         ->pluck('grade');
-                                    $average = $grades->count() > 0 ? number_format($grades->average(), 2) : 'N/A';
+                                    
+                                    // Convert string grades to float for calculation
+                                    $numericGrades = $grades->map(function($grade) {
+                                        return is_numeric($grade) ? (float)$grade : null;
+                                    })->filter();
+                                    
+                                    $average = $numericGrades->count() > 0 ? 
+                                        number_format($numericGrades->average(), 2) : 'N/A';
                                 @endphp
                                 {{ $average }}
                             </div>
@@ -94,7 +102,7 @@
                                     @if($subject->pivot->grade)
                                         @if($subject->pivot->grade === 'INC')
                                             <span class="badge badge-secondary">Pending</span>
-                                        @elseif($subject->pivot->grade <= 3.0)
+                                        @elseif(is_numeric($subject->pivot->grade) && (float)$subject->pivot->grade <= 3.0)
                                             <span class="badge badge-success">Passed</span>
                                         @else
                                             <span class="badge badge-danger">Failed</span>
@@ -132,3 +140,5 @@
         });
     </script>
 @endpush
+
+

@@ -45,6 +45,9 @@ return new class extends Migration
         } catch (\Exception $e) {
             // Constraint might not exist, continue
         }
+
+        Schema::table('student_subjects', function (Blueprint $table) {
+            $table->decimal('grade', 5, 2)->nullable()->change();
+        });
     }
 };
-
